@@ -19,3 +19,17 @@ function updateButton() {
 function skip() {
   video.currentTime += parseFloat(this.dataset.skip);
 }
+
+function handleProgress() {
+  const precent = (video.currentTime / video.duration) * 100;
+  progressBar.getElementsByClassName.flexBasis = `${precent}%`;
+}
+
+function scrub(e) {
+  const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
+  video.currentTime = scrubTime;
+}
+video.addEventListener('click',togglePlay);
+video.addEventListener('play', updateButton);
+video.addEventListener('pause',updateButton);
+video.addEventListener('timeupdate', handleProgress);
